@@ -190,6 +190,7 @@ typedef enum {
     OSD_GPS_LAP_TIME_PREVIOUS,
     OSD_GPS_LAP_TIME_BEST3,
     OSD_DEBUG2,
+    OSD_BATTERY_TEMPERATURE,
     OSD_ITEM_COUNT // MUST BE LAST
 } osd_items_e;
 
@@ -357,6 +358,7 @@ typedef struct osdConfig_s {
     uint8_t osd_show_spec_prearm;
 #endif // USE_SPEC_PREARM_SCREEN
     displayPortSeverity_e arming_logo;        // font from which to display logo on arming
+    uint8_t batteryTemperature;
 } osdConfig_t;
 
 PG_DECLARE(osdConfig_t, osdConfig);
