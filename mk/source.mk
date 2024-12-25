@@ -70,6 +70,7 @@ COMMON_SRC = \
             scheduler/scheduler.c \
             sensors/adcinternal.c \
             sensors/battery.c \
+            sensors/battery_temp.c \
             sensors/current.c \
             sensors/voltage.c \
             target/config_helper.c \

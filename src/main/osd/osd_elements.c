@@ -168,6 +168,7 @@
 #include "sensors/adcinternal.h"
 #include "sensors/barometer.h"
 #include "sensors/battery.h"
+#include "sensors/battery_temp.h"
 #include "sensors/sensors.h"
 
 #ifdef USE_GPS_PLUS_CODES
@@ -1659,6 +1660,13 @@ static void osdElementTimer(osdElementParms_t *element)
     osdFormatTimer(element->buff, true, true, element->item - OSD_ITEM_TIMER_1);
 }
 
+static void osdElementBatteryTemperature(osdElementParms_t *element)
+{    
+    float batteryTemp = getBatteryTemp();
+    char tempSymbol = osdGetTemperatureSymbolForSelectedUnit();    
+    osdPrintFloat(element->buff, SYM_TEMPERATURE, batteryTemp, "BT %01u", 1, true, tempSymbol);
+}
+
 #ifdef USE_VTX_COMMON
 static void osdElementVtxChannel(osdElementParms_t *element)
 {
@@ -1864,6 +1872,7 @@ static const uint8_t osdElementDisplayOrder[] = {
     OSD_SYS_VTX_TEMP,
     OSD_SYS_FAN_SPEED,
 #endif
+    OSD_BATTERY_TEMPERATURE
 };
 
 // Define the mapping between the OSD element id and the function to draw it
@@ -1990,6 +1999,7 @@ const osdElementDrawFn osdElementDrawFunction[OSD_ITEM_COUNT] = {
     [OSD_TOTAL_FLIGHTS]           = osdElementTotalFlights,
 #endif
     [OSD_AUX_VALUE]               = osdElementAuxValue,
+    [OSD_BATTERY_TEMPERATURE]     = osdElementBatteryTemperature,
 #ifdef USE_MSP_DISPLAYPORT
     [OSD_SYS_GOGGLE_VOLTAGE]      = osdElementSys,
     [OSD_SYS_VTX_VOLTAGE]         = osdElementSys,
