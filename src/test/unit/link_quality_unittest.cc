@@ -111,6 +111,10 @@ extern "C" {
     uint16_t updateLinkQualitySamples(uint16_t value);
 
     extern uint16_t applyRxChannelRangeConfiguraton(int sample, const rxChannelRangeConfig_t *range);
+
+    float getBatteryTemp(void) { return 25.5; }
+
+    char osdGetTemperatureSymbolForSelectedUnit(void) { return SYM_C; }
 }
 void setDefaultSimulationState()
 {

@@ -430,6 +430,8 @@ void pgResetFn_osdConfig(osdConfig_t *osdConfig)
 #ifdef USE_RACE_PRO
     osdConfig->osd_show_spec_prearm = true;
 #endif // USE_RACE_PRO
+
+    osdConfig->batteryTemperature = 0;
 }
 
 void pgResetFn_osdElementConfig(osdElementConfig_t *osdElementConfig)

@@ -163,6 +163,7 @@
 #include "sensors/acceleration.h"
 #include "sensors/barometer.h"
 #include "sensors/battery.h"
+#include "sensors/battery_temp.h"
 #include "sensors/boardalignment.h"
 #include "sensors/compass.h"
 #include "sensors/esc_sensor.h"
@@ -861,6 +862,7 @@ void init(void)
 #endif // VTX_CONTROL
 
     batteryInit(); // always needs doing, regardless of features.
+    batteryTempInit();
 
 #ifdef USE_RCDEVICE
     rcdeviceInit();

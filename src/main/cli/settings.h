@@ -145,6 +145,7 @@ typedef enum {
     TABLE_FREQ_DOMAIN,
     TABLE_SWITCH_MODE,
 #endif
+    TABLE_BATTERY_TEMP_HARDWARE,
     LOOKUP_TABLE_COUNT
 } lookupTableIndex_e;
 
@@ -280,3 +281,5 @@ extern const char * const lookupTableMixerType[];
 extern const char * const lookupTableCMSMenuBackgroundType[];
 
 extern const char * const lookupTableThrottleLimitType[];
+
+extern const char * const lookupTableBatteryTemperatureHardware[];

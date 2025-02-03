@@ -48,6 +48,8 @@ COMMON_SRC = \
             drivers/transponder_ir_arcitimer.c \
             drivers/transponder_ir_ilap.c \
             drivers/transponder_ir_erlt.c \
+            drivers/battery_temp/battery_temp_virtual.c \
+            drivers/battery_temp/battery_temp_aht20.c \
             fc/board_info.c \
             fc/dispatch.c \
             fc/hardfaults.c \
@@ -70,6 +72,7 @@ COMMON_SRC = \
             scheduler/scheduler.c \
             sensors/adcinternal.c \
             sensors/battery.c \
+            sensors/battery_temp.c \
             sensors/current.c \
             sensors/voltage.c \
             target/config_helper.c \

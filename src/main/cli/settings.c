@@ -120,6 +120,7 @@
 #include "sensors/acceleration.h"
 #include "sensors/barometer.h"
 #include "sensors/battery.h"
+#include "sensors/battery_temp.h"
 #include "sensors/boardalignment.h"
 #include "sensors/compass.h"
 #include "sensors/esc_sensor.h"
@@ -165,6 +166,10 @@ const char * const lookupTableRangefinderHardware[] = {
     "NONE", "HCSR04", "TFMINI", "TF02"
 };
 #endif
+
+const char * const lookupTableBatteryTemperatureHardware[] = {
+    "AUTO", "NONE", "ATH20", "VIRTUAL"
+};
 
 const char * const lookupTableOffOn[] = {
     "OFF", "ON"
@@ -654,6 +659,7 @@ const lookupTableEntry_t lookupTables[] = {
     LOOKUP_TABLE_ENTRY(lookupTableFreqDomain),
     LOOKUP_TABLE_ENTRY(lookupTableSwitchMode),
 #endif
+    LOOKUP_TABLE_ENTRY(lookupTableBatteryTemperatureHardware),
 };
 
 #undef LOOKUP_TABLE_ENTRY
@@ -740,6 +746,8 @@ const clivalue_t valueTable[] = {
     { "baro_i2c_address",           VAR_UINT8  | HARDWARE_VALUE, .config.minmaxUnsigned = { 0, I2C_ADDR7_MAX }, PG_BAROMETER_CONFIG, offsetof(barometerConfig_t, baro_i2c_address) },
     { PARAM_NAME_BARO_HARDWARE,     VAR_UINT8  | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_BARO_HARDWARE }, PG_BAROMETER_CONFIG, offsetof(barometerConfig_t, baro_hardware) },
 #endif
+
+    { PARAM_NAME_BATTERY_TEMP_HARDWARE, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_BATTERY_TEMP_HARDWARE }, PG_BATTERY_TEMP_CONFIG, offsetof(batteryTempConfig_t, battery_temp_hardware) },
 
 // PG_RX_CONFIG
     { "mid_rc",                     VAR_UINT16 | MASTER_VALUE, .config.minmaxUnsigned = { 1200, 1700 }, PG_RX_CONFIG, offsetof(rxConfig_t, midrc) },
